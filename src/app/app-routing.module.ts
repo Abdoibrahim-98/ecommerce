@@ -6,10 +6,10 @@ import { SaleComponent } from './pages/sale/sale.component';
 
 
 const routes:Routes = [
-  {path:'**',pathMatch:'full' ,component: HomeComponent},
   {path:'products', component: HomeComponent},
   {path:'cart', component: CartComponent},
-  {path:'sale', component: SaleComponent}
+  {path:'sale', component: SaleComponent},
+  {path:'**',pathMatch:'full' ,component: HomeComponent}
 ]
 
 @NgModule({

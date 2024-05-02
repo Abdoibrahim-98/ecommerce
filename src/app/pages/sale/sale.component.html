@@ -1,1 +1,60 @@
-<p>sale works!</p>
+<div class="row">
+    <div class="col-12">
+        <div class="CartContainer">
+            <div class="row">
+              <div class="col-12 text-center text-md-start">
+                <h3 class="title">Cart Items</h3>
+              </div>
+            </div>
+            <div class="row pt-1 px-2" style="align-items: center;"  *ngFor="let cart of cartProducts"> 
+              <div class="col-md-3 text-center">
+                <img class="img-fluid" [src]="cart.productImageUrl" style="height: 150px;border-radius: 50%; object-fit: contain; align-self: self-start;" class="card-img-top">
+              </div>
+              <div class="col-md-5 text-center">
+               {{cart.productName}}
+              </div>
+              <div class="col-md-1 text-center">
+                {{ cart.quantity + 1 }} {{ (cart.quantity + 1) === 1 ? 'item' : 'items' }}
+
+              </div>
+              <div class="col-md-1 text-center">
+               ${{cart.productPrice}}
+              </div>
+              <div class="col-md-2 text-center">
+                <button class="btn btn-sm btn-danger" (click)="RemoveItem(cart.cartId)">Remove</button>
+               </div>
+            </div>
+           
+            <div class="row">
+              <div class="col-3">
+
+              </div>
+              <div class="col-9">
+                <hr>
+              </div>
+            </div>
+           
+            <div class="row">
+              <div class="col-2">
+                 
+              </div>
+              <div class="col-2">
+                 
+              </div>
+              <div class="col-4">
+                <div class="Subtotal">Sub-Total</div>
+                <div> <small> {{cartProducts.length}} items</small></div>
+              </div>
+              <div class="col-4 text-end">
+                <strong>${{subTotal}}</strong>
+              </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 text-center text-md-end">
+                    <button class="btn btn-lg btn-success" (click)="makeSale()">Make Sale</button>
+                </div>
+            </div>
+          </div>
+    </div>
+</div>

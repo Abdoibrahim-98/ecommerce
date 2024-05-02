@@ -79,8 +79,8 @@
               id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <i class="fa fa-cart-shopping fs-5" style="color: #202122;"></i>
               <span class="position-absolute  translate-middle badge rounded-pill bg-danger">
+                {{cartProducts.length}}
                 <span class="visually-hidden">unread messages</span>
-                3
               </span>
             </a>
             <div class="dropdown-menu">
@@ -93,18 +93,18 @@
                     Remove All
                   </div>
                 </div>
-                <div class="row pt-1"> 
-                  <div class="col-4">
-                    <img class="img-fluid" style="height: 30px;border-radius: 50%;" class="card-img-top">
-                  </div>
+                <div class="row pt-1 px-2"  *ngFor="let cart of cartProducts"> 
                   <div class="col-3">
-                   
+                    <img class="img-fluid" [src]="cart.productImageUrl" style="height: 30px;border-radius: 50%; object-fit: contain;" class="card-img-top">
+                  </div>
+                  <div class="col-5" style="font-size: small;">
+                   {{cart.productName}}
                   </div>
                   <div class="col-2">
-                    
+                    {{cart.quantity +1}}
                   </div>
                   <div class="col-2 text-end">
-                   
+                   {{cart.productPrice}}
                   </div>
                 </div>
                
@@ -126,15 +126,15 @@
                   </div>
                   <div class="col-4">
                     <div class="Subtotal">Sub-Total</div>
-                    <div> <small> 2 items</small></div>
+                    <div> <small> {{cartProducts.length}} items</small></div>
                   </div>
                   <div class="col-4 text-end">
-                    <strong> </strong>
+                    <strong>${{subTotal}}</strong>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-12 text-end">
-                    <button class="btn btn-sm btn-success">Checkout</button>
+                    <button class="btn btn-sm btn-success" (click)="redirectToSale()">Checkout</button>
                   </div>
                 </div> 
               </div>
